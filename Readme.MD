@@ -17,6 +17,9 @@ Go has first class support for concurrency and parallelism, and it goes a step f
 
 # Notes on modules
 
+Discovered what's wrong with my noobie thought process. The right thing to do is probably to create a *new* repository and simply import the `envoyproxy/go-control-plane` project.
+
+Old notes ( there are some useful bits, about modules )
 - Was trying to get `envoyproxy/go-control-plane` to run but it's using an older module management called `glide` ( says on it's repo to move to godep - yet another older module management mechanism ). Could be wrong but I doubt latest version of go works with `glide` ( something to do with suppoprting `vendor` lookup only if it's using go newest module system )
 
 The issue with using go latest module system when the source repository does not support it is that it will report the following error : 
