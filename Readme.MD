@@ -14,3 +14,18 @@ Go has first class support for concurrency and parallelism, and it goes a step f
 - Simplicity of coding for concurrency
 - OO mainly via extension methods (C#) like
 - Oh my gawd - pointers!
+
+# Notes on modules
+
+- Was trying to get `envoyproxy/go-control-plane` to run but it's using an older module management called `glide` ( says on it's repo to move to godep - yet another older module management mechanism ). Could be wrong but I doubt latest version of go works with `glide` ( something to do with suppoprting `vendor` lookup only if it's using go newest module system )
+
+The issue with using go latest module system when the source repository does not support it is that it will report the following error : 
+
+```
+    build github.com/envoyproxy/go-control-plane: cannot load envoy/api/v2/core: cannot find module providing package envoy/api/v2/core
+```
+
+The `cannot load` phrase seem to indicate that it's reaching out to the repository remotely. So in order to stop it from doing that add the `replace` directive in the `go.mod` file like this 
+
+    `replace github.com/envoyproxy/go-control-plane/envoy => ./envoy`
+
