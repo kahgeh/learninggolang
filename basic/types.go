@@ -20,4 +20,16 @@ func main() {
 	myslice = append(myslice, 100)
 
 	fmt.Println(myslice)
+
+	mymap := make(map[int]string)
+	value,alreadyExits := mymap[10]
+
+	fmt.Printf("%v-%v", value, alreadyExits)
+
+	value,alreadyExits = mymap[10]
+	fmt.Printf("%v-%v", value, alreadyExits)
+
+	mymap[10] = "some value"
+	value,alreadyExits = mymap[10]
+	fmt.Printf("%v-%v", value, alreadyExits)
 }
